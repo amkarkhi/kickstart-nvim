@@ -1,0 +1,9 @@
+-- vim.api.nvim_create_autocmd({ 'VimEnter' }, {
+--   pattern = { '*' },
+--   callback = function()
+--     local res = vim.fn.input 'do  you want to load session? (y/n):'
+--     if res == 'y' then
+--       vim.cmd.source 'Session.vim'
+--     end
+--   end,
+-- })
