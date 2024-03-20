@@ -67,7 +67,6 @@ vim.opt.smartindent = true
 vim.opt.guifont = 'Fira Code:h17' -- the font used in graphical neovim applications
 vim.opt.wrap = false
 
-vim.cmd 'colorscheme tokyonight'
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.termguicolors = true
