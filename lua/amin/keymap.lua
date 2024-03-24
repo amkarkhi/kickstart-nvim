@@ -73,7 +73,6 @@ end, { silent = true })
 
 keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'Explorer' })
 
-keymap('n', '<leader>q', ':q<CR>', { desc = 'Quit' })
 keymap('n', '<leader>w', ':w<CR>', { desc = 'Save' })
 
 -- format file
