@@ -72,3 +72,11 @@ keymap('n', '[c', function()
 end, { silent = true })
 
 keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'Explorer' })
+
+keymap('n', '<leader>q', ':q<CR>', { desc = 'Quit' })
+keymap('n', '<leader>w', ':w<CR>', { desc = 'Save' })
+
+-- format file
+keymap('n', '<leader>f', function()
+    vim.lsp.buf.format()
+end, { desc = 'Format' })
