@@ -37,7 +37,7 @@ return {
                 reset = { normal = '<C-l>' }, -- Clear the chat buffer
                 complete = { insert = '<Tab>' }, -- Change to insert mode and press tab to get the completion
                 submit_prompt = { normal = '<CR>' }, -- Submit question to Copilot Chat
-                accept_diff = { normal = '<C-a>' }, -- Accept the diff
+                accept_diff = { normal = '<C-a>', insert = '<C-a>' }, -- Accept the diff
                 show_diff = { normal = '<C-s>' }, -- Show the diff
                 show_system_prompt = { normal = 'gup' }, -- Show system prompt
                 show_user_selection = { normal = 'gus' }, -- Show user selection
