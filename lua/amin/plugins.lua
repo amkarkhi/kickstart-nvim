@@ -7,7 +7,14 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
 
-    { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
+    {
+        'catppuccin/nvim',
+        name = 'catppuccin',
+        priority = 1000,
+        opts = {
+            transparent_background = true,
+        },
+    },
     -- {
     --   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`
     --   'folke/tokyonight.nvim',
