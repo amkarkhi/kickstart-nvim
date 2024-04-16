@@ -109,6 +109,14 @@ return { -- Fuzzy Finder (files, lsp, etc)
             })
         end, { desc = '[/] Fuzzily search in current buffer' })
 
+        -- get all todo and fixme in a list
+        vim.keymap.set('n', '<leader>st', function()
+            builtin.grep_string {
+                prompt_title = 'Search TODO/FIXME',
+                search = 'TODO|FIXME',
+            }
+        end, { desc = '[S]earch [T]odo' })
+
         -- Also possible to pass additional configuration options.
         --  See `:help telescope.builtin.live_grep()` for information about particular keys
         vim.keymap.set('n', '<leader>s/', function()
