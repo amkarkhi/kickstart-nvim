@@ -15,16 +15,16 @@ require('lazy').setup({
             transparent_background = true,
         },
     },
-    -- {
-    --   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`
-    --   'folke/tokyonight.nvim',
-    --   priority = 1000, -- make sure to load this before all the other start plugins
-    --   init = function()
-    --     -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-    --     vim.cmd.colorscheme 'tokyonight-night'
-    --     vim.cmd.hi 'Comment gui=none'
-    --   end,
-    -- },
+    {
+        -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`
+        'folke/tokyonight.nvim',
+        priority = 1000, -- make sure to load this before all the other start plugins
+        init = function()
+            -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+            vim.cmd.colorscheme 'tokyonight-night'
+            vim.cmd.hi 'Comment gui=none'
+        end,
+    },
     { import = 'custom.plugins' },
 
     -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the

@@ -10,6 +10,27 @@ dap.adapters.delve = {
     },
 }
 
+dap.configurations.lldb = {
+    type = 'executable',
+    command = 'lldb-vscode',
+    name = 'lldb',
+}
+
+dap.configurations.cpp = {
+    {
+        name = 'launch',
+        type = 'lldb',
+        request = 'launch',
+        program = function()
+            return vim.fn.input { 'Path to executable: ', vim.fn.getcwd() .. '/', 'file' }
+        end,
+        cwd = '${workspaceFolder}',
+        stopOnEntry = false,
+        args = {},
+        runInTerminal = false,
+    },
+}
+
 require('dap-go').setup {
     -- :help dap-configuration
     dap_configurations = {
