@@ -30,17 +30,35 @@ return {
             { 'nvim-lua/plenary.nvim' },
         },
         opts = {
+            proxy = 'socks5://127.0.0.1:8086',
             prompts = prompts,
             auto_follow_cursor = false, -- Don't follow the cursor after getting response
             mappings = {
                 close = { normal = 'q' }, -- Close chat
                 reset = { normal = '<C-l>' }, -- Clear the chat buffer
-                complete = { insert = '<Tab>' }, -- Change to insert mode and press tab to get the completion
-                submit_prompt = { normal = '<CR>' }, -- Submit question to Copilot Chat
-                accept_diff = { normal = '<C-a>', insert = '<C-a>' }, -- Accept the diff
-                show_diff = { normal = '<C-s>' }, -- Show the diff
-                show_system_prompt = { normal = 'gup' }, -- Show system prompt
-                show_user_selection = { normal = 'gus' }, -- Show user selection
+                complete = {
+                    insert = '<Tab>',
+                    detail = 'Use @<Tab> or /<Tab> for options',
+                }, -- Change to insert mode and press tab to get the completion
+                submit_prompt = { normal = '<CR>', insert = '<C-m>' }, -- Submit question to Copilot Chat
+                accept_diff = { normal = '<C-y>', insert = '<C-y>' }, -- Accept the diff
+                yank_diff = { normal = 'gy' },
+                show_diff = { normal = 'gd' },
+                show_system_prompt = { normal = 'gp' },
+                show_user_selection = { normal = 'gs' },
+            },
+            window = {
+                layout = 'vertical', -- 'vertical', 'horizontal', 'float', 'replace'
+                width = 0.5, -- fractional width of parent, or absolute width in columns when > 1
+                height = 0.5, -- fractional height of parent, or absolute height in rows when > 1
+                -- Options below only apply to floating windows
+                relative = 'editor', -- 'editor', 'win', 'cursor', 'mouse'
+                border = 'single', -- 'none', single', 'double', 'rounded', 'solid', 'shadow'
+                row = nil, -- row position of the window, default is centered
+                col = nil, -- column position of the window, default is centered
+                title = 'Copilot Chat', -- title of chat window
+                footer = nil, -- footer of chat window
+                zindex = 1, -- determines if window is on top or below other floating windows
             },
         },
         config = function(_, opts)
