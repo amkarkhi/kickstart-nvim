@@ -130,5 +130,12 @@ return { -- Fuzzy Finder (files, lsp, etc)
         vim.keymap.set('n', '<leader>sn', function()
             builtin.find_files { cwd = vim.fn.stdpath 'config' }
         end, { desc = '[S]earch [N]eovim files' })
+
+        vim.keymap.set('n', '<leader>sc', function()
+            builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+                winblend = 10,
+                previewer = false,
+            })
+        end, { desc = '[S]earch Current buffer' })
     end,
 }

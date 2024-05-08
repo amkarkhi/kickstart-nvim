@@ -131,17 +131,19 @@ dap.listeners.before.event_terminated.dapui_config = dapui.close
 dap.listeners.before.event_exited.dapui_config = dapui.close
 
 local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
+local function opts(desc)
+    return { noremap = true, silent = true, desc = desc }
+end
 
-keymap('n', '<F5>', dap.continue, opts)
-keymap('n', '<leader>dn', dap.step_over, opts)
-keymap('n', '<leader>di', dap.step_into, opts)
-keymap('n', '<leader>do', dap.step_out, opts)
-keymap('n', '<leader>db', dap.toggle_breakpoint, opts)
+keymap('n', '<F5>', dap.continue, opts 'Debug: Continue')
+keymap('n', '<leader>dn', dap.step_over, opts 'Debug: Step Over')
+keymap('n', '<leader>di', dap.step_into, opts 'Debug: Step Into')
+keymap('n', '<leader>do', dap.step_out, opts 'Debug: Step Out')
+keymap('n', '<leader>db', dap.toggle_breakpoint, opts 'Debug: Toggle Breakpoint')
 keymap('n', '<leader>B', function()
     dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-end, { unpack(opts), desc = 'Debug: Set Breakpoint' })
-keymap('n', '<leader>dr', dap.repl.open, opts)
+end, opts 'Debug: Set Breakpoint')
+keymap('n', '<leader>dr', dap.repl.open, opts 'Debug: Open REPL')
 keymap('n', '<leader>lp', function()
     dap.set_breakpoint(nil, nil, vim.fn.input 'log point message: ')
-end, opts)
+end, opts 'Debug: Log Point')

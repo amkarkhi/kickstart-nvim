@@ -28,11 +28,10 @@ end, { desc = 'Undo Stage Hunk' })
 vim.keymap.set('n', '<leader>go', ':Telescope git_status<CR>', { desc = 'Open changed file' })
 vim.keymap.set('n', '<leader>gb', ':Telescope git_branches<CR>', { desc = 'Checkout branch' })
 vim.keymap.set('n', '<leader>gc', ':Telescope git_commits<CR>', { desc = 'Checkout commit' })
-vim.keymap.set('n', '<leader>gdd', ':Gitsigns diffthis HEAD<CR>', { desc = 'Diff' })
+vim.keymap.set('n', '<leader>gdd', ':Gitsigns diffthis HEAD<CR>', { desc = 'Diff with head' })
 vim.keymap.set('n', '<leader>gt', ':UndotreeToggle<CR>', { desc = 'undo tree' })
 
-vim.keymap.set('n', '<leader>gds', ':Gvdiffsplit!<CR>', { desc = 'Git Diff' })
-
+vim.keymap.set('n', '<leader>gds', ':Gvdiffsplit!<CR>', { desc = 'Git Diff Split' })
 --check if is gvdiffsplit screen create a function to call diffget//3 and diffget//2
 vim.keymap.set('n', '<leader>gdp', ':diffget //3<CR>', { desc = 'Diffget//3' })
 vim.keymap.set('n', '<leader>gdc', ':diffget //2<CR>', { desc = 'Diffget//2' })

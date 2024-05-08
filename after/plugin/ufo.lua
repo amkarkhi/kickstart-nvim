@@ -30,31 +30,31 @@ vim.o.foldenable = true
 -- Only depend on `nvim-treesitter/queries/filetype/folds.scm`,
 -- performance and stability are better than `foldmethod=nvim_treesitter#foldexpr()`
 require('ufo').setup {
-  provider_selector = function(bufnr, filetype, buftype)
-    return { 'treesitter', 'indent' }
-  end,
-  close_fold_kinds_for_ft = {},
-  enable_get_fold_virt_text = false,
-  open_fold_hl_timeout = 400,
-  preview = {
-    win_config = {
-      border = 'rounded',
-      winblend = 12,
-      winhighlight = 'Normal:Normal',
-      maxheight = 20,
+    provider_selector = function(bufnr, filetype, buftype)
+        return { 'treesitter', 'indent' }
+    end,
+    close_fold_kinds_for_ft = {},
+    enable_get_fold_virt_text = false,
+    open_fold_hl_timeout = 400,
+    preview = {
+        win_config = {
+            border = 'rounded',
+            winblend = 12,
+            winhighlight = 'Normal:Normal',
+            maxheight = 20,
+        },
     },
-  },
 }
 
-vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds)
-vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds, { desc = 'Open all folds' })
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds, { desc = 'Close all folds' })
+vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds, { desc = 'Close fold except kind' })
+vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith, { desc = 'Close fold with' }) -- closeAllFolds == closeFoldsWith(0)
 vim.keymap.set('n', 'K', function()
-  local winid = require('ufo').peekFoldedLinesUnderCursor()
-  if not winid then
-    -- choose one of coc.nvim and nvim lsp
-    -- vim.fn.CocActionAsync 'definitionHover' -- coc.nvim
-    vim.lsp.buf.hover()
-  end
-end)
+    local winid = require('ufo').peekFoldedLinesUnderCursor()
+    if not winid then
+        -- choose one of coc.nvim and nvim lsp
+        -- vim.fn.CocActionAsync 'definitionHover' -- coc.nvim
+        vim.lsp.buf.hover()
+    end
+end, { desc = 'Peek definition' })

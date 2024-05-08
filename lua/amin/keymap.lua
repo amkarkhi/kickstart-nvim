@@ -1,13 +1,13 @@
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-keymap('n', '<Esc>', '<cmd>nohlsearch<CR>')
+keymap('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlights' })
 
 -- Diagnostic keymaps
 keymap('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 keymap('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 keymap('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
-keymap('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+keymap('n', '<leader>Q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -47,8 +47,8 @@ keymap('v', '<', '<gv^', opts)
 keymap('v', '>', '>gv^', opts)
 
 -- Move text up and down
--- keymap('v', '<A-j>', ":m '>+1<CR>gv=gv", opts)
--- keymap('v', '<A-k>', ":m '<-2<CR>gv=gv", opts)
+keymap('v', '<A-j>', ":m '>+1<CR>gv=gv", opts)
+keymap('v', '<A-k>', ":m '<-2<CR>gv=gv", opts)
 keymap('v', 'p', '"_dP', opts)
 
 -- Visual Block --
@@ -74,8 +74,9 @@ end, { silent = true })
 keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'Explorer' })
 
 keymap('n', '<leader>w', ':w<CR>', { desc = 'Save' })
+keymap('n', '<leader>q', ':q<CR>', { desc = 'Quit' })
 
 -- format file
 keymap('n', '<leader>f', function()
     vim.lsp.buf.format()
-end, { desc = 'Format' })
+end, { desc = 'Format document' })
