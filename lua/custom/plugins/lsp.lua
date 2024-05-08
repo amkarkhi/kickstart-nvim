@@ -1,6 +1,7 @@
 return {
     'neovim/nvim-lspconfig',
     dependencies = {
+
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
         'WhoIsSethDaniel/mason-tool-installer.nvim',
@@ -67,13 +68,13 @@ return {
                 --    See `:help CursorHold` for information about when this is executed
                 --
                 -- When you move your cursor, the highlights will be cleared (the second autocommand).
+                --
                 local client = vim.lsp.get_client_by_id(event.data.client_id)
                 if client and client.server_capabilities.documentHighlightProvider then
                     vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
                         buffer = event.buf,
                         callback = vim.lsp.buf.document_highlight,
                     })
-
                     vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
                         buffer = event.buf,
                         callback = vim.lsp.buf.clear_references,
@@ -87,6 +88,7 @@ return {
         --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
         --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
         local capabilities = vim.lsp.protocol.make_client_capabilities()
+        capabilities.offsetEncoding = { 'utf-16' }
         capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
         -- Enable the following language servers
@@ -100,17 +102,8 @@ return {
         --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
         local servers = {
             clangd = {
-                capabilities = {
-                    textDocument = {
-                        completion = {
-                            completionItem = {
-                                snippetSupport = true,
-                            },
-                        },
-                    },
-                },
+                capabilities = capabilities,
             },
-
             gopls = {},
             -- pyright = {},
             -- rust_analyzer = {},
@@ -120,11 +113,18 @@ return {
             --    https://github.com/pmizio/typescript-tools.nvim
             --
             -- But for many setups, the LSP (`tsserver`) will work just fine
-            tsserver = {},
-
+            tsserver = {
+                setup = {
+                    cmd = { 'typescript-language-server', '--stdio' },
+                    filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
+                    capabilities = capabilities,
+                    on_attach = require('neodev').on_attach,
+                    root_dir = require('lspconfig/util').root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git'),
+                },
+            },
             lua_ls = {
                 -- cmd = {...},
-                -- filetypes { ...},
+                filetypes = { 'lua' },
                 -- capabilities = {},
                 settings = {
                     Lua = {
@@ -153,6 +153,9 @@ return {
             'stylua', -- Used to format lua code
             'prettierd', -- Used to format javascript code
             'gofumpt', -- Used to format go code
+            'clangd',
+            'clang-format',
+            'codelldb',
         })
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

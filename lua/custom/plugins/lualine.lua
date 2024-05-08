@@ -65,7 +65,7 @@ local diff = {
     cond = hide_in_width,
 }
 local obsession = {
-    '%{ObsessionStatus("!","")}',
+    '%{ObsessionStatus("  ","")}',
     color = setColorByMode,
     padding = { left = 0, right = 0 },
 }

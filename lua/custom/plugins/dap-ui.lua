@@ -5,6 +5,11 @@ return {
     { 'nvim-telescope/telescope-dap.nvim' },
     { 'theHamsta/nvim-dap-virtual-text' },
     { 'williamboman/mason.nvim' },
-    { 'jay-babu/mason-nvim-dap.nvim' },
+    {
+        'jay-babu/mason-nvim-dap.nvim',
+        opts = {
+            handlers = {},
+        },
+    },
     { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } },
 }
