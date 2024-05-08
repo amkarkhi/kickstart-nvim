@@ -42,5 +42,3 @@ require 'amin.commands'
 vim.cmd 'colorscheme tokyonight'
 
 -- vim: ts=2 sts=2 sw=2 et
---
--- #what does a programmer tell to another programmer when
