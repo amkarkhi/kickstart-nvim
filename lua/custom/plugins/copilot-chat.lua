@@ -30,7 +30,9 @@ return {
             { 'nvim-lua/plenary.nvim' },
         },
         opts = {
-            proxy = 'socks5://127.0.0.1:8086',
+            -- proxy = 'socks5://127.0.0.1:8086',
+            proxy = 'http://172.30.125.34:1374',
+
             prompts = prompts,
             auto_follow_cursor = false, -- Don't follow the cursor after getting response
             mappings = {

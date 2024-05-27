@@ -24,6 +24,13 @@ require('lazy').setup({
             vim.cmd.colorscheme 'tokyonight-night'
             vim.cmd.hi 'Comment gui=none'
         end,
+        opts = {
+            transparent_background = true,
+            transparent = true,
+            sidebars = { 'qf', 'vista_kind', 'terminal', 'packer', 'spectre_panel', 'fern', 'NvimTree', 'Outline' },
+            darkSidebar = true,
+            darkFloat = true,
+        },
     },
     { import = 'custom.plugins' },
 
