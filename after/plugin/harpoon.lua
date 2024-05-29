@@ -1,11 +1,11 @@
 local harpoon = require 'harpoon'
 harpoon:setup {}
 
-vim.keymap.set('n', '<leader>a', function()
+vim.keymap.set('n', '<leader>ma', function()
     harpoon:list():add()
 end, { desc = 'Add current file to harpoon' })
 
-vim.keymap.set('n', '<leader>A', function()
+vim.keymap.set('n', '<leader>mr', function()
     harpoon:list():remove()
 end, { desc = 'Remove current file from harpoon' })
 
