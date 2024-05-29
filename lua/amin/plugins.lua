@@ -13,15 +13,17 @@ require('lazy').setup({
         priority = 1000,
         opts = {
             transparent_background = true,
+            style = 'hard',
         },
     },
     {
         -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`
         'folke/tokyonight.nvim',
+        lazy = false,
         priority = 1000, -- make sure to load this before all the other start plugins
         init = function()
             -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-            vim.cmd.colorscheme 'tokyonight-night'
+            vim.cmd.colorscheme 'tokyonight-storm'
             vim.cmd.hi 'Comment gui=none'
         end,
         opts = {
@@ -30,6 +32,12 @@ require('lazy').setup({
             sidebars = { 'qf', 'vista_kind', 'terminal', 'packer', 'spectre_panel', 'fern', 'NvimTree', 'Outline' },
             darkSidebar = true,
             darkFloat = true,
+            border = 'single',
+            terminal_colors = true,
+            hide_inactive_statusline = true,
+            dim_inactive = true,
+            lualine_bold = true,
+            night_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
         },
     },
     { import = 'custom.plugins' },

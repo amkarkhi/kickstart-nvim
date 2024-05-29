@@ -18,12 +18,13 @@ return { -- Autoformat
             --
             -- You can use a sub-list to tell conform to run *until* a formatter
             -- is found.
-            clang = { { 'clang-format', 'clang-format-10' } },
-            cpp = { { 'clang-format', 'clang-format-10' } },
-            c = { { 'clang-format', 'clang-format-10' } },
-            javascript = { { 'prettierd', 'prettier' } },
-            typescript = { { 'prettierd', 'prettier' } },
-            javascriptreact = { { 'prettierd', 'prettier' } },
+            clang = { { 'clang-format' } },
+            cpp = { { 'clang-format' } },
+            c = { { 'clang-format' } },
+            javascript = { { 'prettier' } },
+            typescript = { { 'prettier' } },
+            javascriptreact = { { 'prettier' } },
+            typescriptreact = { { 'prettier' } },
         },
     },
 }

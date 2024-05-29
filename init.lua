@@ -38,7 +38,7 @@ require 'amin.commands'
 -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 
 -- vim.cmd 'colorscheme catppuccin-mocha'
--- vim.cmd 'colorscheme catppuccin-mocha'
-vim.cmd 'colorscheme tokyonight'
+vim.cmd 'colorscheme catppuccin-mocha'
+-- vim.cmd 'colorscheme tokyonight'
 
 -- vim: ts=2 sts=2 sw=2 et

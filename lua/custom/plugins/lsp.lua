@@ -152,6 +152,7 @@ return {
         vim.list_extend(ensure_installed, {
             'stylua', -- Used to format lua code
             'prettierd', -- Used to format javascript code
+            'prettier',
             'gofumpt', -- Used to format go code
             'clangd',
             'clang-format',
