@@ -26,6 +26,8 @@ return { -- Autoformat
             javascriptreact = { { 'prettier' } },
             typescriptreact = { { 'prettier' } },
             go = { { 'gofumpt' } },
+            json = { { 'prettier' } },
+            html = { { 'prettier' } },
         },
     },
 }
