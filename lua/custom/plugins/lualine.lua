@@ -61,7 +61,7 @@ local diagnostics = {
 local diff = {
     'diff',
     colored = false,
-    symbols = { added = ' ', modified = ' ', removed = ' ' }, -- changes diff symbols
+    symbols = { added = ' ', modified = '', removed = ' ' }, -- changes diff symbols
     cond = hide_in_width,
 }
 local obsession = {
@@ -73,7 +73,7 @@ local obsession = {
 local mode = {
     'mode',
     fmt = function(str)
-        return ' ' .. str .. '--'
+        return ' ' .. str .. ' '
     end,
     color = setColorByMode,
     padding = { left = 0, right = 0 },

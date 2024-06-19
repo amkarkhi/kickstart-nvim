@@ -4,7 +4,7 @@ return {
         sync_root_with_cwd = true,
         respect_buf_cwd = true,
         update_focused_file = {
-            enable = false,
+            enable = true,
             update_cwd = true,
         },
         renderer = {
@@ -14,8 +14,8 @@ return {
                     default = '',
                     symlink = '',
                     folder = {
-                        arrow_open = '',
-                        arrow_closed = '+',
+                        arrow_open = '',
+                        arrow_closed = '',
                         default = '',
                         open = '',
                         empty = '',

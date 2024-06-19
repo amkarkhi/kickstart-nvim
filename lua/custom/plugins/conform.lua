@@ -28,6 +28,8 @@ return { -- Autoformat
             go = { { 'gofumpt' } },
             json = { { 'prettier' } },
             html = { { 'prettier' } },
+            markdown = { { 'prettier' } },
+            python = { { 'ruff' } },
         },
     },
 }

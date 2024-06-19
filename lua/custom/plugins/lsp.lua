@@ -1,7 +1,6 @@
 return {
     'neovim/nvim-lspconfig',
     dependencies = {
-
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
         'WhoIsSethDaniel/mason-tool-installer.nvim',
@@ -88,8 +87,14 @@ return {
         --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
         --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
         local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities.offsetEncoding = { 'utf-16' }
-        capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+        -- capabilities.offsetEncoding = { 'utf-16' }
+        capabilities = vim.tbl_deep_extend(
+            'force',
+            capabilities,
+            require('cmp_nvim_lsp').default_capabilities {
+                -- offsetEncoding = { 'utf-16' },
+            }
+        )
 
         -- Enable the following language servers
         --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -136,6 +141,13 @@ return {
                     },
                 },
             },
+
+            ruff = {
+                file_types = { 'python' },
+                on_attach = function(_, bufnr)
+                    vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { bufnr = bufnr })
+                end,
+            },
         }
 
         -- Ensure the servers and tools above are installed
@@ -157,6 +169,7 @@ return {
             'clangd',
             'clang-format',
             'codelldb',
+            'ruff',
         })
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -172,5 +185,7 @@ return {
                 end,
             },
         }
+
+        require('lspconfig').ruff.setup {}
     end,
 }

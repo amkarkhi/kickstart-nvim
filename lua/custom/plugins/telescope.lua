@@ -56,7 +56,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
             -- pickers = {}
             defaults = {
                 --arrow shape prompt
-                prompt_prefix = '🔍❯ ',
+                prompt_prefix = '  ❯ ',
                 selection_caret = '❯ ',
                 -- mappings = {
                 --     x = {
