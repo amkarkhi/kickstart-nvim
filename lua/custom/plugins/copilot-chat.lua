@@ -1,5 +1,18 @@
 local IS_DEV = false
 
+local Proxy
+if os.getenv 'HTTP_PROXY' then
+    Proxy = os.getenv 'HTTP_PROXY'
+elseif os.getenv 'HTTP_PROXY' then
+    Proxy = os.getenv 'HTTP_PROXY'
+elseif os.getenv 'http_proxy' then
+    Proxy = os.getenv 'http_proxy'
+elseif os.getenv 'http_proxy' then
+    Proxy = os.getenv 'http_proxy'
+else
+    Proxy = 'http://172.30.125.34:1374'
+end
+
 local prompts = {
     -- Code related prompts
     Explain = 'Please explain how the following code works.',
@@ -31,7 +44,8 @@ return {
         },
         opts = {
             -- proxy = 'socks5://127.0.0.1:8086',
-            proxy = 'http://172.30.125.34:1374',
+            -- proxy = 'http://172.30.125.34:1374',
+            -- proxy = Proxy,
 
             prompts = prompts,
             auto_follow_cursor = false, -- Don't follow the cursor after getting response
