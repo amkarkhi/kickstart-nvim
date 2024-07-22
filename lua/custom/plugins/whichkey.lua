@@ -27,10 +27,6 @@ return { -- Useful plugin to show you pending keybinds.
         { '<leader>s_', hidden = true },
     },
     config = function() -- This is the function that runs, AFTER loading
-        require('which-key').setup {
-            triggers_blacklist = {
-                i = { 'j', 'k', '<leader>' },
-            },
-        }
+        require('which-key').setup {}
     end,
 }
