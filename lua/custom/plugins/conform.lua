@@ -11,6 +11,7 @@ return { -- Autoformat
                 timeout_ms = 500,
             }
         end,
+        stop_after_first = true,
         formatters_by_ft = {
             lua = { 'stylua' },
             -- Conform can also run multiple formatters sequentially
@@ -18,18 +19,18 @@ return { -- Autoformat
             --
             -- You can use a sub-list to tell conform to run *until* a formatter
             -- is found.
-            clang = { { 'clang-format' } },
-            cpp = { { 'clang-format' } },
-            c = { { 'clang-format' } },
-            javascript = { { 'prettierd' } },
-            typescript = { { 'prettierd' } },
-            javascriptreact = { { 'prettierd' } },
-            typescriptreact = { { 'prettierd' } },
-            go = { { 'gofumpt' } },
-            json = { { 'prettier' } },
-            html = { { 'prettier' } },
-            markdown = { { 'prettier' } },
-            python = { { 'ruff' } },
+            clang = { 'clang-format' },
+            cpp = { 'clang-format' },
+            c = { 'clang-format' },
+            javascript = { 'prettierd' },
+            typescript = { 'prettierd' },
+            javascriptreact = { 'prettierd' },
+            typescriptreact = { 'prettierd' },
+            go = { 'gofumpt' },
+            json = { 'prettier' },
+            html = { 'prettier' },
+            markdown = { 'prettier' },
+            python = { 'ruff' },
         },
     },
 }
