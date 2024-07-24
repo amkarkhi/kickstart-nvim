@@ -6,7 +6,6 @@ return {
         'williamboman/mason-lspconfig.nvim',
         'WhoIsSethDaniel/mason-tool-installer.nvim',
         { 'j-hui/fidget.nvim', opts = {} },
-        { 'folke/neodev.nvim', opts = {} },
     },
     config = function()
         vim.api.nvim_create_autocmd('LspAttach', {
@@ -50,7 +49,7 @@ return {
                     cmd = { 'typescript-language-server', '--stdio' },
                     filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
                     capabilities = capabilities,
-                    on_attach = require('neodev').on_attach,
+                    on_attach = require('lazydev').on_attach,
                     root_dir = require('lspconfig/util').root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git'),
                 },
             },

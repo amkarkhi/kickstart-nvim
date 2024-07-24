@@ -81,3 +81,7 @@ keymap('n', '<leader>f', function()
     -- vim.lsp.buf.format()
     require('conform').format()
 end, { desc = 'Format document' })
+
+keymap('n', '<C-w>z', function()
+    require('maximize').toggle()
+end, { desc = 'Toggle Zen Mode' })

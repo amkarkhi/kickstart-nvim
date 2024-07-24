@@ -1,6 +1,14 @@
 local dap = require 'dap'
 local dapui = require 'dapui'
 
+-- create breakpointhl group with custom color redish background
+
+vim.fn.sign_define('DapBreakpoint', { text = '●', texthl = '', linehl = 'brakpointhl', numhl = 'brakpointhl' })
+vim.fn.sign_define('DapBreakpointCondition', { text = '●?', texthl = '', linehl = 'brakpointhl', numhl = 'brakpointhl' })
+vim.fn.sign_define('DapLogPoint', { text = '➜', texthl = '', linehl = '', numhl = '' })
+vim.fn.sign_define('DapStopped', { text = '■', texthl = '', linehl = 'debugCurrent', numhl = 'debugCurrent' })
+vim.fn.sign_define('DapBreakpointRejected', { text = '●✖', texthl = '', linehl = 'debugError', numhl = 'debugError' })
+
 dap.adapters.delve = {
     type = 'server',
     port = '4000',
@@ -31,104 +39,109 @@ dap.configurations.cpp = {
     },
 }
 
-require('dap-go').setup {
-    -- :help dap-configuration
-    dap_configurations = {
-        {
-            type = 'go',
-            name = 'Attach remote',
-            mode = 'remote',
-            request = 'attach',
-        },
-    },
-    delve = {
-        path = 'dlv',
-        initialize_timeout_sec = 20,
-        port = '${port}',
-        args = {},
-        build_flags = '',
+dap.configurations.go = {
+    {
+        type = 'delve',
+        name = 'Debug',
+        request = 'launch',
+        program = '${file}',
     },
 }
 
 dapui.setup {
-    icons = {
-        expanded = '▾',
-        collapsed = '▸',
-        circular = '●',
-        current_frame = '◉',
-    },
-    expand_lines = true,
-    force_buffers = true,
     controls = {
+        element = 'repl',
         enabled = true,
         icons = {
-            pause = '⏸',
-            play = '▶',
-            step_into = '⏎',
-            step_over = '⏭',
-            step_out = '⏮',
-            step_back = 'b',
-            run_last = '▶▶',
-            terminate = '⏹',
-            disconnect = '⏏',
+            disconnect = '',
+            pause = '',
+            play = '',
+            run_last = '',
+            step_back = '',
+            step_into = '',
+            step_out = '',
+            step_over = '',
+            terminate = '',
         },
-        element = '',
     },
+    element_mappings = {},
+    expand_lines = true,
     floating = {
-        border = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
-        max_height = 0.5,
-        max_width = 0.5,
+        border = 'single',
         mappings = {
             close = { 'q', '<Esc>' },
         },
     },
-    render = {
-        indent = 1,
-        unicode = { scale = 1 },
+    force_buffers = true,
+    icons = {
+        collapsed = '',
+        current_frame = '',
+        expanded = '',
     },
     layouts = {
-        default = {
-            {
-                id = 1,
-                size = 0.25,
-                breakpoints = { 'breakpoints' },
-                watches = { 'watches' },
+        {
+            elements = {
+                {
+                    id = 'scopes',
+                    size = 0.25,
+                },
+                {
+                    id = 'breakpoints',
+                    size = 0.25,
+                },
+                {
+                    id = 'stacks',
+                    size = 0.25,
+                },
+                {
+                    id = 'watches',
+                    size = 0.25,
+                },
             },
-            {
-                id = 2,
-                size = 0.25,
-                stack = { 'stacks' },
+            position = 'left',
+            size = 40,
+        },
+        {
+            elements = {
+                {
+                    id = 'repl',
+                    size = 0.5,
+                },
+                {
+                    id = 'console',
+                    size = 0.5,
+                },
             },
-            {
-                id = 3,
-                size = 0.5,
-                scopes = { 'scopes' },
-            },
+            position = 'bottom',
+            size = 10,
         },
     },
-    element_mappings = {},
     mappings = {
-        expand = { '<CR>' },
+        edit = 'e',
+        expand = { '<CR>', '<2-LeftMouse>' },
         open = 'o',
         remove = 'd',
-        edit = 'e',
+        repl = 'r',
+        toggle = 't',
     },
-    sidebar = {
-        elements = {
-            'scopes',
-            'breakpoints',
-            'stacks',
-            'watches',
-        },
-        width = 40,
-        position = 'left', -- Can be "left" or "right"
+    render = {
+        indent = 1,
+        max_value_lines = 100,
     },
 }
 
-dap.listeners.before.attach.dapui_config = dapui.open
-dap.listeners.before.launch.dapui_config = dapui.open
-dap.listeners.before.event_terminated.dapui_config = dapui.close
-dap.listeners.before.event_exited.dapui_config = dapui.close
+dap.listeners.before.attach.dapui_config = function()
+    dapui.open()
+end
+dap.listeners.before.launch.dapui_config = function()
+    dapui.open()
+end
+dap.listeners.before.event_terminated.dapui_config = function()
+    dapui.close()
+end
+dap.listeners.before.event_exited.dapui_config = function()
+    dapui.close()
+end
 
 local keymap = vim.keymap.set
 local function opts(desc)
@@ -140,10 +153,10 @@ keymap('n', '<leader>dn', dap.step_over, opts 'Debug: Step Over')
 keymap('n', '<leader>di', dap.step_into, opts 'Debug: Step Into')
 keymap('n', '<leader>do', dap.step_out, opts 'Debug: Step Out')
 keymap('n', '<leader>db', dap.toggle_breakpoint, opts 'Debug: Toggle Breakpoint')
-keymap('n', '<leader>B', function()
+keymap('n', '<leader>dc', function()
     dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
 end, opts 'Debug: Set Breakpoint')
 keymap('n', '<leader>dr', dap.repl.open, opts 'Debug: Open REPL')
-keymap('n', '<leader>lp', function()
+keymap('n', '<leader>dp', function()
     dap.set_breakpoint(nil, nil, vim.fn.input 'log point message: ')
 end, opts 'Debug: Log Point')

@@ -100,6 +100,11 @@ local location = {
     color = setReverseColorByMode,
 }
 
+local copilot = {
+    'copilot',
+    color = setReverseColorByMode,
+}
+
 local progress = function()
     local current_line = vim.fn.line '.'
     local total_lines = vim.fn.line '$'
@@ -115,8 +120,12 @@ local ProgressBar = {
 }
 
 local spaces = function()
-    return 'spc: ' .. vim.api.nvim_buf_get_option(0, 'shiftwidth')
+    return 'spc: ' .. vim.api.nvim_get_option_value('shiftwidth', {})
 end
+
+local fileFormat = {
+    'fileformat',
+}
 
 return {
     'nvim-lualine/lualine.nvim',
@@ -134,9 +143,8 @@ return {
             lualine_b = { obsession, mode },
             lualine_c = {},
             -- lualine_x = { "encoding", "fileformat", "filetype" },
-            lualine_x = { diff, spaces, 'encoding', filetype, 'fileformat', 'filesize' },
-            --lualine_y = { filePath, location },
-            lualine_y = { location },
+            lualine_x = { diff, spaces, 'encoding', filetype, fileFormat, 'filesize' },
+            lualine_y = { copilot, location },
             lualine_z = { ProgressBar },
         },
         inactive_sections = {
