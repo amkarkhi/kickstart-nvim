@@ -1,6 +1,7 @@
 return {
     'neovim/nvim-lspconfig',
     dependencies = {
+        'nvim-lspconfig',
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
         'WhoIsSethDaniel/mason-tool-installer.nvim',
@@ -63,10 +64,30 @@ return {
                     },
                 },
             },
-            ruff = {
-                file_types = { 'python' },
-                on_attach = function(_, bufnr)
-                    vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { bufnr = bufnr })
+            pyright = {
+                settings = {
+                    pyright = {
+                        disableOrganizeImports = true,
+                    },
+                    python = {
+                        analysis = {
+                            ignore = { '*' },
+                        },
+                    },
+                },
+            },
+            ruff_lsp = {
+                cmd = { '/bin/ruff-lsp' },
+                cmd_env = { RUFF_TRACE = 'messages' },
+                init_options = {
+                    settings = {
+                        logLevel = 'debug',
+                    },
+                },
+                on_attach = function(client, _)
+                    if client.name == 'ruff_lsp' then
+                        client.server_capabilities.hoverProvider = false
+                    end
                 end,
             },
         }
@@ -81,7 +102,7 @@ return {
             'clangd',
             'clang-format',
             'codelldb',
-            'ruff',
+            'ruff_lsp',
         })
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }
         require('mason-lspconfig').setup {
@@ -93,6 +114,5 @@ return {
                 end,
             },
         }
-        require('lspconfig').ruff.setup {}
     end,
 }
