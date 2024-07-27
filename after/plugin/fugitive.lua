@@ -10,13 +10,14 @@ vim.keymap.set('n', '<leader>gr', git.reset_hunk, { desc = 'Reset Hunk' })
 vim.keymap.set('n', '<leader>gR', git.reset_buffer, { desc = 'Reset Buffer' })
 vim.keymap.set('n', '<leader>gs', git.stage_hunk, { desc = 'Stage Hunk' })
 vim.keymap.set('n', '<leader>gu', git.undo_stage_hunk, { desc = 'Undo Stage Hunk' })
+vim.keymap.set('n', '<leader>gP', ':Git pull', { desc = 'Git pull' })
 vim.keymap.set('n', '<leader>gu', ':Git fetch --all', { desc = 'Fetch All' })
 vim.keymap.set('n', '<leader>gB', function()
     local branch = vim.fn.input 'Branch name: '
     if branch ~= '' then
         vim.cmd('Git checkout -b' .. branch)
     end
-end, { desc = 'Fetch All' })
+end, { desc = 'Checkout to a new branch' })
 vim.keymap.set('n', '<leader>go', ':Telescope git_status<CR>', { desc = 'Open changed file' })
 vim.keymap.set('n', '<leader>gb', ':Telescope git_branches<CR>', { desc = 'Checkout branch' })
 vim.keymap.set('n', '<leader>gc', ':Telescope git_commits<CR>', { desc = 'Checkout commit' })
