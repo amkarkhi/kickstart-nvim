@@ -10,8 +10,8 @@ vim.keymap.set('n', '<leader>gr', git.reset_hunk, { desc = 'Reset Hunk' })
 vim.keymap.set('n', '<leader>gR', git.reset_buffer, { desc = 'Reset Buffer' })
 vim.keymap.set('n', '<leader>gs', git.stage_hunk, { desc = 'Stage Hunk' })
 vim.keymap.set('n', '<leader>gu', git.undo_stage_hunk, { desc = 'Undo Stage Hunk' })
-vim.keymap.set('n', '<leader>gP', ':Git pull', { desc = 'Git pull' })
-vim.keymap.set('n', '<leader>gu', ':Git fetch --all', { desc = 'Fetch All' })
+vim.keymap.set('n', '<leader>gP', ':Git pull<CR>', { desc = 'Git pull' })
+vim.keymap.set('n', '<leader>gu', ':Git fetch --all<CR>', { desc = 'Fetch All' })
 vim.keymap.set('n', '<leader>gB', function()
     local branch = vim.fn.input 'Branch name: '
     if branch ~= '' then
