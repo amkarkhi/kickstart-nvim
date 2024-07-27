@@ -28,7 +28,11 @@ return {
                 if client and client.server_capabilities.documentHighlightProvider then
                     vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
                         buffer = event.buf,
-                        callback = vim.lsp.buf.document_highlight,
+                        callback = function()
+                            if vim.lsp.buf.server_capabilities and vim.lsp.buf.server_capabilities.document_highlight then
+                                vim.lsp.buf.document_highlight()
+                            end
+                        end,
                     })
                     vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
                         buffer = event.buf,
