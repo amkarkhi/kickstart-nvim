@@ -46,6 +46,12 @@ dap.configurations.go = {
         request = 'launch',
         program = '${file}',
     },
+    {
+        type = 'delve',
+        name = 'run main',
+        request = 'launch',
+        program = '${workspaceFolder}',
+    },
 }
 
 dapui.setup {
