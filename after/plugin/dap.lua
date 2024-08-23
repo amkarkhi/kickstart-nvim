@@ -49,16 +49,10 @@ dap.configurations.go = {
     },
     {
         type = 'delve',
-<<<<<<< HEAD
         name = 'run main',
         request = 'launch',
         program = '${workspaceFolder}',
-=======
-        name = 'Debug main',
         cwd = '${workspaceFolder}', -- This should already be set to the root of your workspace
-        request = 'launch',
-        program = '${workspaceFolder}', -- Set this to the root of your workspace
->>>>>>> fa18e25 (update ! ?)
     },
 }
 
