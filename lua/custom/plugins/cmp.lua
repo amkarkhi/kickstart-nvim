@@ -31,7 +31,6 @@ local kind_icons = {
 
 return { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    commit = 'b356f2c',
     event = 'InsertEnter',
     dependencies = {
         {

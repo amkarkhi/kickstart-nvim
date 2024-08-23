@@ -8,6 +8,7 @@ return {
         { 'j-hui/fidget.nvim', opts = {} },
     },
     config = function()
+        -- local lsp_zero = require 'lsp-zero'
         vim.api.nvim_create_autocmd('LspAttach', {
             group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
             callback = function(event)
@@ -24,6 +25,7 @@ return {
                 map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
                 map('K', vim.lsp.buf.hover, 'Hover Documentation')
                 map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+                map('<F3>', '<cmd>lua vim.lsp.buf.format({async=true})<CR>', 'Format')
                 local client = vim.lsp.get_client_by_id(event.data.client_id)
                 if client and client.server_capabilities.documentHighlightProvider then
                     vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
@@ -41,11 +43,16 @@ return {
                 end
             end,
         })
+        -- lsp_zero.extend_lspconfig {
+        --     sign_text = true,
+        --     -- lsp_attach = lsp_attach,
+        -- }
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities {})
         local servers = {
             clangd = {
                 capabilities = capabilities,
+                cmd = { 'clangd', '--offset-encoding=utf-16' },
             },
             gopls = {},
             tsserver = {

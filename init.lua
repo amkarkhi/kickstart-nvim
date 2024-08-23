@@ -27,11 +27,8 @@ P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 
 require 'amin.options'
-
 require 'amin.keymap'
-
 require 'amin.autocmd'
-
 require 'amin.plugins'
 require 'amin.commands'
 
@@ -39,6 +36,8 @@ require 'amin.commands'
 
 -- vim.cmd 'colorscheme catppuccin-mocha'
 vim.cmd 'colorscheme catppuccin-mocha'
+
+vim.g['clang_format#detect_style_file'] = 1
 -- vim.g.have_nerd_font = true
 -- vim.cmd 'colorscheme tokyonight'
 
