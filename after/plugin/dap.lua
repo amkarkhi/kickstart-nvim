@@ -42,18 +42,20 @@ dap.configurations.cpp = {
 dap.configurations.go = {
     {
         type = 'delve',
-        name = 'Debug',
-        cwd = '${workspaceFolder}',
-        request = 'launch',
-        program = '${file}',
-    },
-    {
-        type = 'delve',
         name = 'run main',
         request = 'launch',
         program = '${workspaceFolder}',
         cwd = '${workspaceFolder}', -- This should already be set to the root of your workspace
     },
+    {
+        type = 'delve',
+        name = 'Debug',
+        cwd = '${workspaceFolder}',
+        request = 'launch',
+        program = '${file}',
+    },
+    { name = 'Debug test', type = 'go', request = 'launch', mode = 'test', program = '${file}' },
+    { name = 'Debug test (go.mod)', type = 'go', request = 'launch', mode = 'test', program = './${relativeFileDirname}' },
 }
 
 dapui.setup {
