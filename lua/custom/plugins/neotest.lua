@@ -40,6 +40,46 @@ return {
                 -- require 'neotest-golang', -- Registration
                 require 'neotest-go', -- Registration
             },
+            run = {
+                enabled = true,
+                neotest = {
+                    command = 'neotest',
+                    args = { '--log-level', '2' },
+                },
+            },
+            discovery = {
+                enabled = true,
+                go = {
+                    command = 'go',
+                    args = { 'list', './...' },
+                    cwd = '${workspaceFolder}',
+                },
+            },
+            log_level = 2,
+            output = {
+                border = true,
+                borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+                enabled = true,
+                open_on_run = true,
+            },
+            watch = {
+                enabled = true,
+                symbol_queries = { 'test', 'example' },
+                patterns = { '*.go' },
+            },
+            statusline = {
+                enable = true,
+                interval = 1000,
+                format = 'Neotest: %',
+            },
+            output_panel = {
+                enabled = true,
+                open = 'belowright 10new',
+                position = 'bottom',
+                size = 10,
+                border = true,
+                borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+            },
         }
     end,
 }
