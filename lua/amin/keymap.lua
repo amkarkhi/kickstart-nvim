@@ -85,3 +85,6 @@ end, { desc = 'Format document' })
 keymap('n', '<C-w>z', function()
     require('maximize').toggle()
 end, { desc = 'Toggle Zen Mode' })
+
+keymap('n', '<F4>', ':NeotestRun<CR>', { desc = 'neo test run' })
+keymap('n', '<leader>;', ':Telescope emoji<CR>', { desc = 'neo test run' })
