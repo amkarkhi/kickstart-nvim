@@ -158,6 +158,9 @@ local function opts(desc)
     return { noremap = true, silent = true, desc = desc }
 end
 
+vim.api.nvim_create_user_command('ToggleDapUI', dapui.toggle, {})
+
+keymap('n', '<F6>', dap.close, opts 'Debug: Stop')
 keymap('n', '<F5>', dap.continue, opts 'Debug: Continue')
 keymap('n', '<leader>dn', dap.step_over, opts 'Debug: Step Over')
 keymap('n', '<leader>di', dap.step_into, opts 'Debug: Step Into')
