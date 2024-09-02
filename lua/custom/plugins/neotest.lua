@@ -40,6 +40,26 @@ return {
                 -- require 'neotest-golang', -- Registration
                 require 'neotest-go', -- Registration
             },
+            status = {
+                enabled = true,
+                signs = true,
+                virtual_text = true,
+            },
+            quickfix = {
+                auto_open = true,
+                auto_close = true,
+                enabled = true,
+                open = true,
+            },
+            summary = {
+                enabled = true,
+                follow = true,
+                animated = true,
+                open = 'belowright 10new',
+                count = true,
+                expand_errors = true,
+                border = true,
+            },
             run = {
                 enabled = true,
                 neotest = {
@@ -49,6 +69,7 @@ return {
             },
             discovery = {
                 enabled = true,
+                concurrent = 1,
                 go = {
                     command = 'go',
                     args = { 'list', './...' },
