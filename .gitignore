@@ -6,3 +6,4 @@ nvim
 spell/
 lazy-lock.json
 Session.vim
+db_ui
