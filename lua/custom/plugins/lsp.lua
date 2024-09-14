@@ -55,7 +55,7 @@ return {
                 cmd = { 'clangd', '--offset-encoding=utf-16' },
             },
             gopls = {},
-            tsserver = {
+            ts_ls = {
                 setup = {
                     cmd = { 'typescript-language-server', '--stdio' },
                     filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },

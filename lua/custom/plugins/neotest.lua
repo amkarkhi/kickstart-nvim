@@ -37,13 +37,18 @@ return {
 
         require('neotest').setup {
             adapters = {
-                -- require 'neotest-golang', -- Registration
                 require 'neotest-go', -- Registration
             },
             status = {
                 enabled = true,
                 signs = true,
                 virtual_text = true,
+            },
+
+            icons = {
+                enabled = true,
+                success = '✓',
+                error = '✗',
             },
             quickfix = {
                 auto_open = true,
@@ -59,6 +64,11 @@ return {
                 count = true,
                 expand_errors = true,
                 border = true,
+                mappings = {
+                    clear_target = 'c',
+                    clear_marked = 'm',
+                    short = 's',
+                },
             },
             run = {
                 enabled = true,
