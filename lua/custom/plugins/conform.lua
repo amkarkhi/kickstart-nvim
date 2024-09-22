@@ -35,6 +35,8 @@ return { -- Autoformat
             html = { 'prettierd' },
             markdown = { 'prettier' },
             python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
+            sql = { 'sqlfmt' },
+            dockerfile = { 'dockerfilelint' },
         },
         formatters = {
             clang_format = {
