@@ -3,7 +3,7 @@ test.sh
 .luarc.json
 nvim
 
-spell/
+spell/*.add*
 lazy-lock.json
 Session.vim
-db_ui
+db_ui/*.json
