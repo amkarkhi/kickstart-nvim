@@ -88,3 +88,6 @@ end, { desc = 'Toggle Zen Mode' })
 
 keymap('n', '<F4>', ':NeotestRun<CR>', { desc = 'neo test run' })
 keymap('n', '<leader>;', ':Telescope emoji<CR>', { desc = 'neo test run' })
+
+keymap('n', '<leader>Fml', '<cmd>CellularAutomaton make_it_rain<CR>', { desc = 'Make it rain' })
+keymap('n', '<leader>FML', '<cmd>CellularAutomaton game_of_life<CR>', { desc = 'Game of life' })
