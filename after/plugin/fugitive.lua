@@ -28,3 +28,9 @@ vim.keymap.set('n', '<leader>gds', ':Gvdiffsplit!<CR>', { desc = 'Git Diff Split
 --check if is gvdiffsplit screen create a function to call diffget//3 and diffget//2
 vim.keymap.set('n', '<leader>gdp', ':diffget //3<CR>', { desc = 'Diffget//3' })
 vim.keymap.set('n', '<leader>gdc', ':diffget //2<CR>', { desc = 'Diffget//2' })
+
+-- this is for digikala private repo and other stuff
+vim.g.fugitive_gitlab_domains = {
+    'https://gitlab.com',
+    'https://git.digikala.com',
+}
