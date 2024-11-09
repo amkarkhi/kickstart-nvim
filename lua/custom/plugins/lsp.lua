@@ -86,8 +86,8 @@ return {
                     },
                 },
             },
-            ruff_lsp = {
-                cmd = { '/bin/ruff-lsp' },
+            ruff = {
+                cmd = { '/bin/ruff' },
                 cmd_env = { RUFF_TRACE = 'messages' },
                 init_options = {
                     settings = {
@@ -95,7 +95,7 @@ return {
                     },
                 },
                 on_attach = function(client, _)
-                    if client.name == 'ruff_lsp' then
+                    if client.name == 'ruff' then
                         client.server_capabilities.hoverProvider = false
                     end
                 end,
@@ -112,7 +112,7 @@ return {
             'clangd',
             'clang-format',
             'codelldb',
-            'ruff_lsp',
+            'ruff',
         })
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }
         require('mason-lspconfig').setup {
