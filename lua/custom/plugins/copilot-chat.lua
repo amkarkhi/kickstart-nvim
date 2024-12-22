@@ -37,7 +37,7 @@ return {
     {
         dir = IS_DEV and '~/Projects/research/CopilotChat.nvim' or nil,
         'CopilotC-Nvim/CopilotChat.nvim',
-        branch = 'canary',
+        -- branch = 'canary',
         dependencies = {
             { 'nvim-telescope/telescope.nvim' }, -- Use telescope for help actions
             { 'nvim-lua/plenary.nvim' },
@@ -60,8 +60,8 @@ return {
                 accept_diff = { normal = '<C-y>', insert = '<C-y>' }, -- Accept the diff
                 yank_diff = { normal = 'gy' },
                 show_diff = { normal = 'gd' },
-                show_system_prompt = { normal = 'gp' },
-                show_user_selection = { normal = 'gs' },
+                show_info = { normal = 'gp' },
+                show_context = { normal = 'gs' },
             },
             window = {
                 layout = 'vertical', -- 'vertical', 'horizontal', 'float', 'replace'
