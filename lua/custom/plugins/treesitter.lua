@@ -3,7 +3,7 @@ return {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
         opts = {
-            ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'cpp' },
+            ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'cpp', 'toml', 'rust', 'go' },
             -- Autoinstall languages that are not installed
             auto_install = true,
             cache_dir = vim.fn.stdpath 'cache' .. '/nvim-treesitter',
@@ -15,6 +15,11 @@ return {
                 additional_vim_regex_highlighting = { 'ruby' },
             },
             indent = { enable = true, disable = { 'ruby' } },
+            rainbow = {
+                enable = true,
+                extended_mode = true,
+                max_file_lines = nil,
+            },
         },
         config = function(_, opts)
             -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
