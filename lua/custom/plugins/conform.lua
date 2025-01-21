@@ -18,11 +18,6 @@ return { -- Autoformat
         stop_after_first = true,
         formatters_by_ft = {
             lua = { 'stylua' },
-            -- Conform can also run multiple formatters sequentially
-            -- python = { "isort", "black" },
-            --
-            -- You can use a sub-list to tell conform to run *until* a formatter
-            -- is found.
             clang = { 'clang-format' },
             cpp = { 'clang-format' },
             c = { 'clang-format' },
@@ -37,6 +32,7 @@ return { -- Autoformat
             python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
             sql = { 'sqlfmt' },
             dockerfile = { 'dockerfilelint' },
+            toml = { 'taplo' },
         },
         formatters = {
             clang_format = {
