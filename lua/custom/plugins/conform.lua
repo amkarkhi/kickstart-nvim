@@ -37,6 +37,7 @@ return { -- Autoformat
             python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
             sql = { 'sqlfmt' },
             dockerfile = { 'dockerfilelint' },
+            toml = { 'taplo' },
         },
         formatters = {
             clang_format = {
