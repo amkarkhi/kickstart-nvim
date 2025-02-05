@@ -1,18 +1,5 @@
 local IS_DEV = false
 
-local Proxy
-if os.getenv 'HTTP_PROXY' then
-    Proxy = os.getenv 'HTTP_PROXY'
-elseif os.getenv 'HTTP_PROXY' then
-    Proxy = os.getenv 'HTTP_PROXY'
-elseif os.getenv 'http_proxy' then
-    Proxy = os.getenv 'http_proxy'
-elseif os.getenv 'http_proxy' then
-    Proxy = os.getenv 'http_proxy'
-else
-    Proxy = 'http://172.30.125.34:1374'
-end
-
 local prompts = {
     -- Code related prompts
     Explain = 'Please explain how the following code works.',
@@ -37,7 +24,7 @@ return {
     {
         dir = IS_DEV and '~/Projects/research/CopilotChat.nvim' or nil,
         'CopilotC-Nvim/CopilotChat.nvim',
-        -- branch = 'canary',
+        branch = 'main',
         dependencies = {
             { 'nvim-telescope/telescope.nvim' }, -- Use telescope for help actions
             { 'nvim-lua/plenary.nvim' },
@@ -90,8 +77,10 @@ return {
             }
             opts.prompts.CommitStaged = {
                 prompt = 'Write commit message for the change with commitizen convention',
-                selection = function(source)
-                    return select.gitdiff(source, true)
+                selection = function()
+                    -- selection = function(source)
+                    -- return select.gitdiff(source, true)
+                    return select.gitdiff()
                 end,
             }
 
