@@ -20,8 +20,7 @@ return {
         if atac_dir and vim.fn.isdirectory(atac_dir) == 1 then
             atac_dir = atac_dir
         else
-            atac_dir = current_dir .. '/docs/rest'
-            vim.fn.mkdir(atac_dir, 'p')
+            atac_dir = current_dir
         end
         require('atac').setup {
             dir = atac_dir, -- By default, the dir will be set as /tmp/atac
