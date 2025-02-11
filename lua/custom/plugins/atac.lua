@@ -23,7 +23,6 @@ return {
             atac_dir = current_dir .. '/docs/rest'
             vim.fn.mkdir(atac_dir, 'p')
         end
-        print(atac_dir)
         require('atac').setup {
             dir = atac_dir, -- By default, the dir will be set as /tmp/atac
         }
