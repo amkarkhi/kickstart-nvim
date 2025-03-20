@@ -31,7 +31,6 @@ return {
         },
         opts = {
             -- proxy = 'socks5://127.0.0.1:8086',
-            -- proxy = 'http://172.30.125.34:1374',
             -- proxy = Proxy,
 
             prompts = prompts,
@@ -115,8 +114,10 @@ return {
             {
                 '<leader>ah',
                 function()
+                    local copilot_chat = require 'CopilotChat'
                     local actions = require 'CopilotChat.actions'
-                    require('CopilotChat.integrations.telescope').pick(actions.help_actions())
+                    -- require('CopilotChat.integrations.telescope').pick(actions.help_actions())
+                    copilot_chat.select_prompt(actions.help_actions)
                 end,
                 desc = 'CopilotChat - Help actions',
             },
@@ -124,8 +125,10 @@ return {
             {
                 '<leader>ap',
                 function()
+                    local copilot_chat = require 'CopilotChat'
                     local actions = require 'CopilotChat.actions'
-                    require('CopilotChat.integrations.telescope').pick(actions.prompt_actions())
+                    -- require('CopilotChat.integrations.telescope').pick(actions.prompt_actions())
+                    copilot_chat.select_prompt(actions)
                 end,
                 desc = 'CopilotChat - Prompt actions',
             },
@@ -144,7 +147,7 @@ return {
             -- Chat with Copilot in visual mode
             {
                 '<leader>av',
-                ':CopilotChatVisual<cr>',
+                ':CopilotChat<cr>',
                 mode = 'x',
                 desc = 'CopilotChat - Open in vertical split',
             },
