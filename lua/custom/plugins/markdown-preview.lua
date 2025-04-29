@@ -1,6 +1,8 @@
-vim.g.nvim_markdown_preview_format = 'markdown'
-vim.g.nvim_markdown_preview_theme = 'solarized-dark'
-
 return {
-    'davidgranstrom/nvim-markdown-preview',
+    'iamcco/markdown-preview.nvim',
+    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
+    ft = { 'markdown' },
+    build = function()
+        vim.fn['mkdp#util#install']()
+    end,
 }

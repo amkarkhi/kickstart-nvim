@@ -106,8 +106,8 @@ return {
         local ensure_installed = vim.tbl_keys(servers or {})
         vim.list_extend(ensure_installed, {
             'stylua', -- Used to format lua code
-            'prettierd', -- Used to format javascript code
             'prettier',
+            'prettierd', -- Used to format javascript code
             'gofumpt', -- Used to format go code
             'clangd',
             'clang-format',
