@@ -19,6 +19,15 @@ local prompts = {
     Concise = 'Please rewrite the following text to make it more concise.',
 }
 
+-- read env and see if http_proxy is enable disable the proxy if not set the proxy to  MYPROXY var
+--
+local MYPROXY = 'http://127.0.0.1:8118'
+
+local http_proxy = os.getenv 'http_proxy'
+if http_proxy and http_proxy ~= '' then
+    MYPROXY = http_proxy
+end
+
 return {
     -- { import = 'plugins.extras.copilot-vim' }, -- Or use { import = "lazyvim.plugins.extras.coding.copilot" },
     {
@@ -31,7 +40,7 @@ return {
         },
         opts = {
             -- proxy = 'socks5://127.0.0.1:8086',
-            -- proxy = Proxy,
+            proxy = MYPROXY,
 
             prompts = prompts,
             auto_follow_cursor = false, -- Don't follow the cursor after getting response
