@@ -8,7 +8,6 @@ return {
         'nvim-treesitter/nvim-treesitter',
     },
     config = function()
-        -- get neotest namespace (api call creates or returns namespace)
         local neotest_ns = vim.api.nvim_create_namespace 'neotest'
         vim.diagnostic.config({
             virtual_text = {
@@ -26,6 +25,9 @@ return {
         local function run_test_file()
             require('neotest').run.run(vim.fn.expand '%')
         end
+        local function run_my_file()
+            require('neotest').run.run(vim.fn.getcwd())
+        end
         local function run_test_directory()
             require('neotest').run.run '${workspaceFolder}'
         end
@@ -34,6 +36,7 @@ return {
         vim.api.nvim_create_user_command('NeotestRun', run_tests, { nargs = 0 })
         vim.api.nvim_create_user_command('NeotestRunFile', run_test_file, { nargs = 0 })
         vim.api.nvim_create_user_command('NeotestRunDirectory', run_test_directory, { nargs = 0 })
+        vim.api.nvim_create_user_command('NeotestHere', run_my_file, { nargs = 0 })
 
         require('neotest').setup {
             adapters = {
@@ -44,7 +47,6 @@ return {
                 signs = true,
                 virtual_text = true,
             },
-
             icons = {
                 enabled = true,
                 success = '✓',
@@ -97,6 +99,7 @@ return {
                 enabled = true,
                 symbol_queries = { 'test', 'example' },
                 patterns = { '*.go' },
+                debounce = 1000,
             },
             statusline = {
                 enable = true,
