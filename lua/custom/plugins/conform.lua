@@ -33,6 +33,7 @@ return { -- Autoformat
             sql = { 'sqlfmt' },
             dockerfile = { 'dockerfilelint' },
             toml = { 'taplo' },
+            yaml = { 'kube-linter', 'yamlfmt', 'prettier' },
         },
         formatters = {
             clang_format = {
