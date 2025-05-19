@@ -29,7 +29,7 @@ return { -- Autoformat
             json = { 'prettier' },
             html = { 'prettierd' },
             markdown = { 'prettier' },
-            python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
+            python = { 'ruff', 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
             sql = { 'sqlfmt' },
             dockerfile = { 'dockerfilelint' },
             toml = { 'taplo' },

@@ -87,8 +87,8 @@ return {
                 },
             },
             ruff = {
-                cmd = { '/bin/ruff' },
-                cmd_env = { RUFF_TRACE = 'messages' },
+                cmd = { 'ruff', 'server' },
+                filetypes = { 'python' },
                 init_options = {
                     settings = {
                         logLevel = 'debug',
