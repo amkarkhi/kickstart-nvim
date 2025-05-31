@@ -41,6 +41,7 @@ return {
         opts = {
             -- proxy = 'socks5://127.0.0.1:8086',
             proxy = MYPROXY,
+            model = 'claude-3.7-sonnet', -- Model to use for Copilot Chat
 
             prompts = prompts,
             auto_follow_cursor = false, -- Don't follow the cursor after getting response
