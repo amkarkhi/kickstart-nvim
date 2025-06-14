@@ -12,6 +12,48 @@ return {
                 lazy = true,
             },
         },
+        mappings = {
+            diff = {
+                ours = 'co',
+                theirs = 'ct',
+                all_theirs = 'ca',
+                both = 'cb',
+                cursor = 'cc',
+                next = ']x',
+                prev = '[x',
+            },
+            suggestion = {
+                accept = '<M-l>',
+                next = '<M-]>',
+                prev = '<M-[>',
+                dismiss = '<C-]>',
+            },
+            jump = {
+                next = ']]',
+                prev = '[[',
+            },
+            submit = {
+                normal = '<CR>',
+                insert = '<C-s>',
+            },
+            cancel = {
+                normal = { '<C-c>', '<Esc>', 'q' },
+                insert = { '<C-c>' },
+            },
+            sidebar = {
+                apply_all = 'A',
+                apply_cursor = 'a',
+                retry_user_request = 'r',
+                edit_user_request = 'e',
+                -- switch_windows = '<Tab>', chang this to ctrl + tab
+                switch_windows = '<C-Tab>',
+                reverse_switch_windows = '<S-Tab>',
+                remove_file = 'd',
+                add_file = '@',
+                close = { '<Esc>', 'q' },
+                close_from_input = nil, -- e.g., { normal = "<Esc>", insert = "<C-d>" }
+            },
+        },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = 'make',
