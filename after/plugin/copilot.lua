@@ -5,7 +5,7 @@ if p and p ~= '' then
     proxy = p
 end
 
-vim.g.copilot_proxy = proxy
+-- vim.g.copilot_proxy = proxy
 vim.g.copilot_workspace_folders = { vim.fn.getcwd() }
 vim.g.copilot_telemetry = 0
 

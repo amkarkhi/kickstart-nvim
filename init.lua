@@ -35,7 +35,8 @@ require 'amin.commands'
 -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 
 -- vim.cmd 'colorscheme catppuccin-mocha'
-vim.cmd 'colorscheme catppuccin-mocha'
+-- vim.cmd 'colorscheme catppuccin-mocha'
+vim.cmd 'colorscheme tokyonight-moon'
 
 vim.g['clang_format#detect_style_file'] = 1
 -- vim.g.have_nerd_font = true
