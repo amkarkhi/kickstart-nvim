@@ -1,7 +1,7 @@
 vim.opt.spell = false
 
 vim.api.nvim_create_autocmd('FileType', {
-    pattern = { 'go', 'markdown', 'text' },
+    pattern = { 'go', 'markdown', 'text', 'lua' },
     callback = function()
         vim.opt.spell = true
         vim.opt.spelllang = 'en_us'

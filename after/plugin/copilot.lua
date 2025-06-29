@@ -5,13 +5,22 @@ if p and p ~= '' then
     proxy = p
 end
 
--- vim.g.copilot_proxy = proxy
-vim.g.copilot_workspace_folders = { vim.fn.getcwd() }
-vim.g.copilot_telemetry = 0
+vim.g.copilot_proxy = proxy
+-- vim.g.copilot_workspace_folders = { vim.fn.getcwd() }
+-- vim.g.copilot_telemetry = 0
+--
+-- vim.keymap.set('i', '<C-;>', '<Plug>(copilot-next)')
+-- vim.keymap.set('i', '<C-/>', '<Plug>(copilot-previous)')
+-- vim.keymap.set('i', '<C-]>', '<Plug>(copilot-suggest)')
+--
+-- vim.keymap.set('i', '<C-.>', '<Plug>(copilot-accept-word)')
+-- vim.keymap.set('i', '<C-,>', '<Plug>(copilot-accept-line)')
 
-vim.keymap.set('i', '<C-;>', '<Plug>(copilot-next)')
-vim.keymap.set('i', '<C-/>', '<Plug>(copilot-previous)')
-vim.keymap.set('i', '<C-]>', '<Plug>(copilot-suggest)')
+local cmp = require 'cmp'
+cmp.event:on('menu_opened', function()
+    vim.b.copilot_suggestion_hidden = true
+end)
 
-vim.keymap.set('i', '<C-.>', '<Plug>(copilot-accept-word)')
-vim.keymap.set('i', '<C-,>', '<Plug>(copilot-accept-line)')
+cmp.event:on('menu_closed', function()
+    vim.b.copilot_suggestion_hidden = false
+end)

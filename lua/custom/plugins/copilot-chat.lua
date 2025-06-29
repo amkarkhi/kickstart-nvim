@@ -40,7 +40,7 @@ return {
         },
         opts = {
             -- proxy = 'socks5://127.0.0.1:8086',
-            -- proxy = MYPROXY,
+            proxy = MYPROXY,
 
             prompts = prompts,
             auto_follow_cursor = false, -- Don't follow the cursor after getting response

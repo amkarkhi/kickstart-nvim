@@ -140,7 +140,7 @@ return {
         },
         sections = {
             lualine_a = { branch, diagnostics },
-            lualine_b = { obsession, mode, 'rest' },
+            lualine_b = { obsession, mode },
             lualine_c = {},
             -- lualine_x = { "encoding", "fileformat", "filetype" },
             lualine_x = { diff, spaces, 'encoding', filetype, fileFormat, 'filesize' },

@@ -1,65 +1,28 @@
 return {
     'yetone/avante.nvim',
+    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+    -- ⚠️ must add this setting! ! !
+    build = function()
+        -- conditionally use the correct build system for the current OS
+        if vim.fn.has 'win32' == 1 then
+            return 'powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false'
+        else
+            return 'make'
+        end
+    end,
     event = 'VeryLazy',
     version = false, -- Never set this value to "*"! Never!
+    ---@module 'avante'
+    ---@type avante.Config
     opts = {
         -- add any opts here
         -- for example
         provider = 'copilot',
         providers = {
-            copilot = {
-                enabled = true,
-                lazy = true,
-            },
-        },
-        mappings = {
-            diff = {
-                ours = 'co',
-                theirs = 'ct',
-                all_theirs = 'ca',
-                both = 'cb',
-                cursor = 'cc',
-                next = ']x',
-                prev = '[x',
-            },
-            suggestion = {
-                accept = '<M-l>',
-                next = '<M-]>',
-                prev = '<M-[>',
-                dismiss = '<C-]>',
-            },
-            jump = {
-                next = ']]',
-                prev = '[[',
-            },
-            submit = {
-                normal = '<CR>',
-                insert = '<C-s>',
-            },
-            cancel = {
-                normal = { '<C-c>', '<Esc>', 'q' },
-                insert = { '<C-c>' },
-            },
-            sidebar = {
-                apply_all = 'A',
-                apply_cursor = 'a',
-                retry_user_request = 'r',
-                edit_user_request = 'e',
-                -- switch_windows = '<Tab>', chang this to ctrl + tab
-                switch_windows = '<C-Tab>',
-                reverse_switch_windows = '<S-Tab>',
-                remove_file = 'd',
-                add_file = '@',
-                close = { '<Esc>', 'q' },
-                close_from_input = nil, -- e.g., { normal = "<Esc>", insert = "<C-d>" }
-            },
+            copilot = {},
         },
     },
-    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    build = 'make',
-    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
     dependencies = {
-        'nvim-treesitter/nvim-treesitter',
         'nvim-lua/plenary.nvim',
         'MunifTanjim/nui.nvim',
         --- The below dependencies are optional,
