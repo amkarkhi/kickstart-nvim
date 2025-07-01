@@ -100,11 +100,6 @@ local location = {
     color = setReverseColorByMode,
 }
 
-local copilot = {
-    'copilot',
-    color = setReverseColorByMode,
-}
-
 local progress = function()
     local current_line = vim.fn.line '.'
     local total_lines = vim.fn.line '$'
@@ -129,6 +124,7 @@ local fileFormat = {
 
 return {
     'nvim-lualine/lualine.nvim',
+
     opts = {
         options = {
             icons_enabled = true,
@@ -144,7 +140,7 @@ return {
             lualine_c = {},
             -- lualine_x = { "encoding", "fileformat", "filetype" },
             lualine_x = { diff, spaces, 'encoding', filetype, fileFormat, 'filesize' },
-            lualine_y = { copilot, location },
+            lualine_y = { 'copilot', location },
             lualine_z = { ProgressBar },
         },
         inactive_sections = {

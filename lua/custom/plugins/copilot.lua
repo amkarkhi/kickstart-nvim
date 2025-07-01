@@ -40,7 +40,7 @@ return {
                 },
             },
             filetypes = {
-                ['.'] = true,
+                ['*'] = true,
             },
             auth_provider_url = nil, -- URL to authentication provider, if not "https://github.com/"
             copilot_node_command = 'node', -- Node.js version must be > 20

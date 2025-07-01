@@ -25,7 +25,7 @@ local kind_icons = {
     Operator = '󰆕',
     TypeParameter = ' ',
     Misc = ' ',
-    Copilot = '',
+    -- Copilot = '',
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 

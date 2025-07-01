@@ -18,9 +18,9 @@ return {
         -- add any opts here
         -- for example
         provider = 'copilot',
-        providers = {
-            copilot = {},
-        },
+        -- providers = {
+        --     copilot = {},
+        -- },
     },
     dependencies = {
         'nvim-lua/plenary.nvim',
