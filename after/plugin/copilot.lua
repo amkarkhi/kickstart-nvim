@@ -1,11 +1,11 @@
--- vim.g.copilot_proxy = 'http://127.0.0.1:8119'
-local proxy = 'http://127.0.0.1:8118'
-local p = os.getenv 'http_proxy'
-if p and p ~= '' then
-    proxy = p
-end
+-- -- vim.g.copilot_proxy = 'http://127.0.0.1:8119'
+-- local proxy = 'http://127.0.0.1:8118'
+-- local p = os.getenv 'http_proxy'
+-- if p and p ~= '' then
+--     proxy = p
+-- end
 
-vim.g.copilot_proxy = proxy
+-- vim.g.copilot_proxy = proxy
 -- vim.g.copilot_workspace_folders = { vim.fn.getcwd() }
 -- vim.g.copilot_telemetry = 0
 --
