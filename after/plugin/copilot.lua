@@ -24,3 +24,4 @@
 -- cmp.event:on('menu_closed', function()
 --     vim.b.copilot_suggestion_hidden = false
 -- end)
+--

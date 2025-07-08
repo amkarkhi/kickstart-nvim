@@ -11,7 +11,7 @@ return {
         require('copilot').setup {
             panel = {
                 enabled = true,
-                auto_refresh = false,
+                auto_refresh = true,
                 keymap = {
                     jump_prev = '[[',
                     jump_next = ']]',
@@ -26,8 +26,8 @@ return {
             },
             suggestion = {
                 enabled = true,
-                auto_trigger = false,
-                hide_during_completion = true,
+                auto_trigger = true,
+                hide_during_completion = false,
                 debounce = 75,
                 trigger_on_accept = true,
                 keymap = {
@@ -36,7 +36,7 @@ return {
                     accept_line = '<C-Tab>',
                     next = '<M-]>',
                     prev = '<M-[>',
-                    dismiss = '<C-]>',
+                    dismiss = '<C-e>',
                 },
             },
             filetypes = {
@@ -51,7 +51,7 @@ return {
             end,
             should_attach = function(_, _)
                 if not vim.bo.buflisted then
-                    return false
+                    return true
                 end
                 if vim.bo.buftype ~= '' then
                     return false
