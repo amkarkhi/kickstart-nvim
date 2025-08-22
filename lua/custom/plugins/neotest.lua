@@ -66,6 +66,7 @@ return {
             },
             adapters = {
                 require 'neotest-go', -- Registration
+                require 'rustaceanvim.neotest',
             },
             status = {
                 enabled = true,
@@ -118,6 +119,11 @@ return {
                     args = { 'list', './...' },
                     cwd = '${workspaceFolder}',
                 },
+                -- rust = {
+                --     command = 'cargo',
+                --     args = { 'test' },
+                --     cwd = '${workspaceFolder}',
+                -- },
             },
             log_level = 2,
             output = {
