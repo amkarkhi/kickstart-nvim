@@ -1,7 +1,8 @@
 return {
     'nvim-neotest/neotest',
     dependencies = {
-        'nvim-neotest/neotest-go',
+        -- 'nvim-neotest/neotest-go',
+        { 'fredrikaverpil/neotest-golang', version = '*' }, -- Installation
         'nvim-neotest/nvim-nio',
         'nvim-lua/plenary.nvim',
         'antoinemadec/FixCursorHold.nvim',
@@ -64,9 +65,11 @@ return {
                 max_width = 0.8,
                 position = 'right',
             },
+            level = vim.log.levels.DEBUG,
             adapters = {
-                require 'neotest-go', -- Registration
+                -- require 'neotest-go', -- Registration
                 require 'rustaceanvim.neotest',
+                require 'neotest-golang'(neotest_golang_opts), -- Registration
             },
             status = {
                 enabled = true,
@@ -132,12 +135,12 @@ return {
                 enabled = true,
                 open_on_run = true,
             },
-            -- watch = {
-            --     enabled = true,
-            --     symbol_queries = { 'test', 'example' },
-            --     patterns = { '*.go' },
-            --     debounce = 1000,
-            -- },
+            watch = {
+                enabled = true,
+                symbol_queries = { 'test', 'example' },
+                patterns = { '*.go' },
+                debounce = 1000,
+            },
             statusline = {
                 enable = true,
                 interval = 1000,

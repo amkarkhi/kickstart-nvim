@@ -1,36 +1,20 @@
 local dap = require 'dap'
 local dapui = require 'dapui'
+local dapgo = require 'dap-go'
 
--- create breakpointhl group with custom color redish background
+dapgo.setup {}
 
+dap.set_log_level 'TRACE'
 vim.fn.sign_define('DapBreakpoint', { text = '●', texthl = '', linehl = 'brakpointhl', numhl = 'brakpointhl' })
 vim.fn.sign_define('DapBreakpointCondition', { text = '●?', texthl = '', linehl = 'brakpointhl', numhl = 'brakpointhl' })
 vim.fn.sign_define('DapLogPoint', { text = '➜', texthl = '', linehl = '', numhl = '' })
 vim.fn.sign_define('DapStopped', { text = '■', texthl = '', linehl = 'debugCurrent', numhl = 'debugCurrent' })
 vim.fn.sign_define('DapBreakpointRejected', { text = '●✖', texthl = '', linehl = 'debugError', numhl = 'debugError' })
 
-dap.adapters.delve = {
-    type = 'server',
-    port = '4000',
-    executable = {
-        command = 'dlv',
-        args = { 'dap', '-l', '127.0.0.1:4000' },
-    },
-}
-
-dap.configurations.lldb = {
+dap.adapters.lldb = {
     type = 'executable',
-    command = 'lldb-vscode',
+    command = 'lldb',
     name = 'lldb',
-}
-
-dap.adapters.codelldb = {
-    type = 'server',
-    port = '${port}',
-    executable = {
-        command = 'codelldb',
-        args = { '--port', '${port}' },
-    },
 }
 
 dap.configurations.cpp = {
@@ -48,18 +32,30 @@ dap.configurations.cpp = {
     },
 }
 
-dap.configurations.rust = {
-    {
-        name = 'Launch file',
-        type = 'codelldb',
-        request = 'launch',
-        program = function()
-            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-        end,
-        cwd = '${workspaceFolder}',
-        stopOnEntry = false,
-    },
-}
+-- dap.configurations.rust = {
+--     {
+--         name = 'Launch file',
+--         type = 'lldb',
+--         request = 'launch',
+--         program = function()
+--             return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+--         end,
+--         cwd = '${workspaceFolder}',
+--         stopOnEntry = false,
+--     },
+--     {
+--         name = 'debug',
+--         type = 'lldb',
+--         request = 'launch',
+--         program = function()
+--             local project = vim.fn.fnamemodify(cwd, ':t')
+--             return vim.fn.getcwd() .. '/target/debug/' .. project
+--         end,
+--         cwd = '${workspaceFolder}',
+--         stopOnEntry = false,
+--     },
+-- }
+
 dap.adapters.gdb = {
     type = 'executable',
     command = 'gdb',
@@ -103,25 +99,44 @@ dap.configurations.c = {
 }
 
 dap.configurations.cpp = dap.configurations.c
-dap.configurations.rust = dap.configurations.c
 
-dap.configurations.go = {
+dap.configurations.rust = {
     {
-        type = 'delve',
-        name = 'Debug main',
+        name = 'Launch Project',
+        type = 'lldb',
         request = 'launch',
-        program = '${workspaceFolder}',
-        cwd = '${workspaceFolder}', -- This should already be set to the root of your workspace
-    },
-    {
-        type = 'delve',
-        name = 'Debug',
+        program = function()
+            local project = vim.fn.fnamemodify(cwd, ':t')
+            return vim.fn.getcwd() .. '/target/debug/' .. project
+        end,
+        args = {}, -- provide arguments if needed
         cwd = '${workspaceFolder}',
-        request = 'launch',
-        program = '${file}',
+        stopAtBeginningOfMainSubprogram = false,
     },
-    { name = 'Debug test', type = 'go', request = 'launch', mode = 'test', program = '${file}' },
-    { name = 'Debug test (go.mod)', type = 'go', request = 'launch', mode = 'test', program = './${relativeFileDirname}' },
+    {
+        name = 'Launch',
+        type = 'lldb',
+        request = 'launch',
+        program = function()
+            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        args = {}, -- provide arguments if needed
+        cwd = '${workspaceFolder}',
+        stopAtBeginningOfMainSubprogram = false,
+    },
+    {
+        name = 'Select and attach to process',
+        type = 'lldb',
+        request = 'attach',
+        program = function()
+            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        pid = function()
+            local name = vim.fn.input 'Executable name (filter): '
+            return require('dap.utils').pick_process { filter = name }
+        end,
+        cwd = '${workspaceFolder}',
+    },
 }
 
 dapui.setup {

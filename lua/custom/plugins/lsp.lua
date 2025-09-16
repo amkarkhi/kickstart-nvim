@@ -111,7 +111,6 @@ return {
             'gofumpt', -- Used to format go code
             'clangd',
             'clang-format',
-            'codelldb',
             'ruff',
         })
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }
