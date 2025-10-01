@@ -32,30 +32,6 @@ dap.configurations.cpp = {
     },
 }
 
--- dap.configurations.rust = {
---     {
---         name = 'Launch file',
---         type = 'lldb',
---         request = 'launch',
---         program = function()
---             return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
---         end,
---         cwd = '${workspaceFolder}',
---         stopOnEntry = false,
---     },
---     {
---         name = 'debug',
---         type = 'lldb',
---         request = 'launch',
---         program = function()
---             local project = vim.fn.fnamemodify(cwd, ':t')
---             return vim.fn.getcwd() .. '/target/debug/' .. project
---         end,
---         cwd = '${workspaceFolder}',
---         stopOnEntry = false,
---     },
--- }
-
 dap.adapters.gdb = {
     type = 'executable',
     command = 'gdb',
