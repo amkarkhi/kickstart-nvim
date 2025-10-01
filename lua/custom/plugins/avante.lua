@@ -68,7 +68,7 @@ return {
                 apply_cursor = 'a',
                 retry_user_request = 'r',
                 edit_user_request = 'e',
-                switch_windows = '<Tab>',
+                switch_windows = '<M-Tab>',
                 reverse_switch_windows = '<S-Tab>',
                 remove_file = 'd',
                 add_file = '@',
