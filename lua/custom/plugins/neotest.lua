@@ -1,8 +1,8 @@
 return {
     'nvim-neotest/neotest',
     dependencies = {
-        -- 'nvim-neotest/neotest-go',
-        { 'fredrikaverpil/neotest-golang', version = '*' }, -- Installation
+        'nvim-neotest/neotest-go',
+        -- { 'fredrikaverpil/neotest-golang', version = '*' }, -- Installation
         'nvim-neotest/nvim-nio',
         'nvim-lua/plenary.nvim',
         'antoinemadec/FixCursorHold.nvim',
@@ -67,9 +67,9 @@ return {
             },
             level = vim.log.levels.DEBUG,
             adapters = {
-                -- require 'neotest-go', -- Registration
+                require 'neotest-go', -- Registration
                 require 'rustaceanvim.neotest',
-                require 'neotest-golang'(neotest_golang_opts), -- Registration
+                -- require 'neotest-golang'(neotest_golang_opts), -- Registration
             },
             status = {
                 enabled = true,

@@ -7,7 +7,7 @@ return { -- Autoformat
             -- Disable "format_on_save lsp_fallback" for languages that don't
             -- have a well standardized coding style. You can add additional
             -- languages here or re-enable it for the disabled ones.
-            local disable_filetypes = { c = true, cpp = true }
+            local disable_filetypes = { c = true, cpp = true, rust = true }
             -- local disable_filetypes = {}
             return {
                 timeout_ms = 500,
@@ -26,7 +26,7 @@ return { -- Autoformat
             javascriptreact = { 'prettier' },
             typescriptreact = { 'prettier' },
             go = { 'gofumpt' },
-            json = { 'prettier' },
+            json = { 'prettierd' },
             html = { 'prettierd' },
             markdown = { 'prettier' },
             python = { 'ruff', 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
@@ -34,6 +34,7 @@ return { -- Autoformat
             dockerfile = { 'dockerfilelint' },
             toml = { 'taplo' },
             yaml = { 'kube-linter', 'yamlfmt', 'prettier' },
+            rust = { 'rustfmt' },
         },
         formatters = {
             clang_format = {
@@ -42,6 +43,12 @@ return { -- Autoformat
             },
             shfmt = {
                 prepend_args = { '-i', '4' },
+            },
+            rustfmt = {
+                -- Use the rustfmt.toml in your project root
+                -- If you want to use a global one, you can specify the path here
+                -- command = 'rustfmt',
+                -- args = { '--config-path', '/path/to/your/rustfmt.toml' },
             },
         },
     },
