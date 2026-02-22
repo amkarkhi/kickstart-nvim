@@ -7,3 +7,5 @@ vim.keymap.set('n', '<leader>su', strudel.update, { desc = 'Strudel Update' })
 vim.keymap.set('n', '<leader>ss', strudel.stop, { desc = 'Strudel Stop Playback' })
 vim.keymap.set('n', '<leader>sb', strudel.set_buffer, { desc = 'Strudel set current buffer' })
 vim.keymap.set('n', '<leader>sx', strudel.execute, { desc = 'Strudel set current buffer and update' })
+
+vim.api.nvim_create_user_command('Music', strudel.launch, { desc = 'Launch Strudel' })

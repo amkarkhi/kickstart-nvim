@@ -6,7 +6,8 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-
+    { 'rebelot/kanagawa.nvim' },
+    { 'EdenEast/nightfox.nvim' },
     {
         'catppuccin/nvim',
         name = 'catppuccin',
@@ -23,7 +24,7 @@ require('lazy').setup({
         priority = 1000, -- make sure to load this before all the other start plugins
         init = function()
             -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-            vim.cmd.colorscheme 'tokyonight-storm'
+            -- vim.cmd.colorscheme 'tokyonight-storm'
             vim.cmd.hi 'Comment gui=none'
         end,
         opts = {
