@@ -38,7 +38,7 @@ require 'amin.commands'
 -- vim.cmd 'colorscheme catppuccin-mocha'
 -- vim.cmd 'colorscheme tokyonight-moon'
 -- vim.cmd 'colorscheme nightfox'
-vim.cmd 'colorscheme terafox'
+vim.cmd 'colorscheme kanagawa'
 
 vim.g['clang_format#detect_style_file'] = 1
 -- vim.g.have_nerd_font = true
