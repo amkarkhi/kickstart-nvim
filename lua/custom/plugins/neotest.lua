@@ -68,7 +68,7 @@ return {
             level = vim.log.levels.DEBUG,
             adapters = {
                 require 'neotest-go', -- Registration
-                require 'rustaceanvim.neotest',
+                -- require 'rustaceanvim.neotest',
                 -- require 'neotest-golang'(neotest_golang_opts), -- Registration
             },
             status = {

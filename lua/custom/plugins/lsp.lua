@@ -100,6 +100,18 @@ return {
                     end
                 end,
             },
+            rust_analyzer = {
+                settings = {
+                    ['rust-analyzer'] = {
+                        cargo = {
+                            allFeatures = true,
+                            extraEnv = {
+                                RUSTFLAGS = '-Clinker=clang -Clink-arg=-fuse-ld=lld',
+                            },
+                        },
+                    },
+                },
+            },
         }
 
         require('mason').setup()
