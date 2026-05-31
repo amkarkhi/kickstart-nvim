@@ -1,5 +1,7 @@
 local strudel = require 'strudel'
 
+vim.api.nvim_create_augroup('StrudelSync', { clear = true })
+
 vim.keymap.set('n', '<leader>sl', strudel.launch, { desc = 'Launch Strudel' })
 vim.keymap.set('n', '<leader>sq', strudel.quit, { desc = 'Quit Strudel' })
 vim.keymap.set('n', '<leader>st', strudel.toggle, { desc = 'Strudel Toggle Play/Stop' })
