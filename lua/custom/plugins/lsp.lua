@@ -55,15 +55,15 @@ return {
                 cmd = { 'clangd', '--offset-encoding=utf-16' },
             },
             gopls = {},
-            ts_ls = {
-                setup = {
-                    cmd = { 'typescript-language-server', '--stdio' },
-                    filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
-                    capabilities = capabilities,
-                    on_attach = require('lazydev').on_attach,
-                    root_dir = require('lspconfig/util').root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git'),
-                },
-            },
+            -- ts_ls = {
+            --     setup = {
+            --         cmd = { 'typescript-language-server', '--stdio' },
+            --         filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
+            --         capabilities = capabilities,
+            --         on_attach = require('lazydev').on_attach,
+            --         root_dir = require('lspconfig/util').root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git'),
+            --     },
+            -- },
             lua_ls = {
                 filetypes = { 'lua' },
                 settings = {
@@ -74,18 +74,18 @@ return {
                     },
                 },
             },
-            pyright = {
-                settings = {
-                    pyright = {
-                        disableOrganizeImports = true,
-                    },
-                    python = {
-                        analysis = {
-                            ignore = { '*' },
-                        },
-                    },
-                },
-            },
+            -- pyright = {
+            --     settings = {
+            --         pyright = {
+            --             disableOrganizeImports = true,
+            --         },
+            --         python = {
+            --             analysis = {
+            --                 ignore = { '*' },
+            --             },
+            --         },
+            --     },
+            -- },
             ruff = {
                 cmd = { 'ruff', 'server' },
                 filetypes = { 'python' },
@@ -118,8 +118,6 @@ return {
         local ensure_installed = vim.tbl_keys(servers or {})
         vim.list_extend(ensure_installed, {
             'stylua', -- Used to format lua code
-            'prettier',
-            'prettierd', -- Used to format javascript code
             'gofumpt', -- Used to format go code
             'clangd',
             'clang-format',

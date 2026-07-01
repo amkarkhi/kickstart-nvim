@@ -7,6 +7,7 @@ return {
     opts = {
         bigfile = { enabled = true },
         dashboard = { enabled = true },
+        lazygit = { enabled = false },
         explorer = { enabled = true },
         indent = { enabled = true },
         input = { enabled = true },
@@ -17,6 +18,7 @@ return {
         scroll = { enabled = true },
         statuscolumn = { enabled = true },
         words = { enabled = true },
+        image = {},
     },
     config = function(_, opts)
         require('snacks').setup(opts)
