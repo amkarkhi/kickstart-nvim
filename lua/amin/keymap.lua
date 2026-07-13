@@ -73,6 +73,8 @@ end, { silent = true })
 
 keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'Explorer' })
 
+keymap('n', '<leader>nh', '<cmd>NotifierHistory<CR>', { desc = 'Notification History' })
+
 keymap('n', '<leader>w', ':w<CR>', { desc = 'Save' })
 keymap('n', '<leader>q', ':q<CR>', { desc = 'Quit' })
 

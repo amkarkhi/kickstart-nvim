@@ -12,27 +12,8 @@ return {
         -- this file can contain specific instructions for your project
         instructions_file = 'avante.md',
         -- for example
-        provider = 'claude',
-        providers = {
-            claude = {
-                endpoint = 'https://api.anthropic.com',
-                model = 'claude-sonnet-4-20250514',
-                timeout = 30000, -- Timeout in milliseconds
-                extra_request_body = {
-                    temperature = 0.75,
-                    max_tokens = 20480,
-                },
-            },
-            moonshot = {
-                endpoint = 'https://api.moonshot.ai/v1',
-                model = 'kimi-k2-0711-preview',
-                timeout = 30000, -- Timeout in milliseconds
-                extra_request_body = {
-                    temperature = 0.75,
-                    max_tokens = 32768,
-                },
-            },
-        },
+        -- provider = 'copilot',
+        -- providers = {},
     },
     dependencies = {
         'nvim-lua/plenary.nvim',
@@ -46,7 +27,6 @@ return {
         'folke/snacks.nvim', -- for input provider snacks
         'nvim-tree/nvim-web-devicons', -- or echasnovski/mini.icons
         -- 'zbirenbaum/copilot.lua', -- for providers='copilot'
-
         'github/copilot.vim',
         {
             -- support for image pasting
