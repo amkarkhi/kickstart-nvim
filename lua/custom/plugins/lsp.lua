@@ -54,6 +54,25 @@ return {
                 capabilities = capabilities,
                 cmd = { 'clangd', '--offset-encoding=utf-16' },
             },
+            vue_ls = {
+                init_options = {
+                    vue = {
+                        hybridMode = true,
+                    },
+                },
+            },
+            ts_ls = {},
+            vtsls = {
+                filetypes = {
+                    'javascript',
+                    'javascriptreact',
+                    'javascript.jsx',
+                    'typescript',
+                    'typescriptreact',
+                    'typescript.tsx',
+                    'vue',
+                },
+            },
             gopls = {},
             -- ts_ls = {
             --     setup = {
@@ -131,7 +150,11 @@ return {
                 function(server_name)
                     local server = servers[server_name] or {}
                     server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-                    require('lspconfig')[server_name].setup(server)
+                    -- require('lspconfig')[server_name].setup(server)
+                    for k, v in pairs(server) do
+                        vim.lsp.config(k, v)
+                        vim.lsp.enable(server_name)
+                    end
                 end,
             },
         }
